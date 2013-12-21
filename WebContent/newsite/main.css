@@ -1,0 +1,73 @@
+
+{  
+    margin: 0;  
+    padding: 0;  
+}
+header, footer, aside, nav, article {  
+    display: block;  
+} 
+body 
+{  
+	/*background-image:url('images/logovectorflipped3.jpg');*/ 
+	
+	margin: 0 auto;  
+    width: 1040px;  
+	/*font: 13px/22px Helvetica, Arial, sans-serif;  */
+	background: #000000;
+	color: #ffff00;
+}
+
+h1
+{
+	font-size: 24px;
+}
+h2
+{
+	font-size: 18px;
+}
+
+
+nav 
+{  
+    left: 0;  
+    width: 100%; 
+    background: #000000;
+    color: #ffff00;
+    border-width: 1;
+}  
+
+nav ul 
+{  
+	width: 1000px; 
+    margin: 0 auto;  
+    list-style: none;  
+}  
+
+nav ul li 
+{  
+    float: left;  
+}  
+
+nav ul li a 
+{  
+	background: #000000;
+	border: solid 1px #ffff00;   
+    display: block;  
+    margin-right: 5px;  
+    margin-bottom: 5px;
+    width: 190px;  
+    font-size: 14px;  
+    line-height: 44px;  
+    text-align: center;  
+    text-decoration: none;  
+    color: #ffff00;  
+}  
+  
+        nav ul li a:hover {  
+            color: #fff;  
+        }  
+  
+        nav ul li.selected a {  
+            color: #fff;  
+        }  
+

@@ -1,0 +1,23 @@
+table
+{
+border-collapse:collapse;
+}
+
+table, td, th
+{
+border:1px solid green;
+}
+th
+{
+background-color:green;
+color:white;
+}
+
+body {  
+        margin: 0 auto;  
+        width: 940px;  
+        font: 23px/32px Helvetica, Arial, sans-serif;  
+        background: #7ff07f;  
+    }
+
+   

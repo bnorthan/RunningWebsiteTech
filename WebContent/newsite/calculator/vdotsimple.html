@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head><title>We are back</title>
+<link rel="stylesheet" type="text/css" href="main.css" media="screen">
+<script language="JavaScript" type="text/javascript" src="runningmath.js"></script>
+<script language="JavaScript" type="text/javascript" src="vdotsimple.js"></script>
+</head>
+
+<body>
+
+
+<FORM name='raceInfo'>
+<B>Select a race Distance:</B><BR><SELECT NAME='racedist'>
+<OPTION VALUE=''>Distance</OPTION>
+<OPTION VALUE=2>1500</OPTION>
+<OPTION VALUE=3>Mile</OPTION>
+<OPTION VALUE=4>3km</OPTION>
+<OPTION VALUE=5>2-mile</OPTION>
+<OPTION VALUE=6 SELECTED>5km</OPTION>
+<OPTION VALUE=7>8km</OPTION>
+<OPTION VALUE=8>5-mile</OPTION>
+<OPTION VALUE=9>10km</OPTION>
+<OPTION VALUE=10>15km</OPTION>
+<OPTION VALUE=11>10-mile</OPTION>
+<OPTION VALUE=12>20km</OPTION>
+<OPTION VALUE=13>Half-marathon</OPTION>
+<OPTION VALUE=14>25km</OPTION>
+<OPTION VALUE=15>30km</OPTION>
+<OPTION VALUE=16>Marathon</OPTION>
+</SELECT>
+
+<B>Time for that Distance:</B><BR>[mm:ss or hh:mm:ss - separated by colons]<BR><INPUT type='TEXT' name='racetime' size='15' value='17:43' onFocus='this.select();'>
+
+<input type='button' value='Calculate VDOT' onClick='calculateVDOT(document.raceInfo.racetime.value)'> 
+<INPUT TYPE='BUTTON' Value=' + ' onClick='findIntensity (1.0)'>
+</br>
+</br>
+Seconds
+<INPUT TYPE='TEXT' NAME='seconds'>
+</br>
+Race Index
+<INPUT TYPE='TEXT' NAME='raceIndex'>
+</br>
+VDOT
+<INPUT TYPE='TEXT' NAME='vdot'>
+Equivalent Mile
+<input TYPE='TEXT' Name='eMile'>
+Equivalent 5km
+<input TYPE='TEXT' Name='e5km'>
+Equivalent Marathon
+<input TYPE='TEXT' Name='eMarathon'>
+
+</FORM>
+</body>
+</html>

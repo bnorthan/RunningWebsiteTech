@@ -1,0 +1,29 @@
+table
+{
+	width: 80%;
+	font-family: verdana,arial,sans-serif;
+	border-collapse:collapse;
+	table-layout: fixed;
+}
+table, td, th
+{  
+	border:1px solid black;
+	font-size: 16px;
+}
+th
+{
+	background-color:#FFFFFF;
+	color:#000000;
+}
+td
+{
+	background-color:#FFFFFF;
+	color:#000000;
+	border-right: 0;
+	border-left:0;  
+}
+
+.racelistdate
+{
+	width: 160px;
+}

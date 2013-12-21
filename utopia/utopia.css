@@ -1,0 +1,25 @@
+table
+{
+border-collapse:collapse;
+}
+
+table, td, th
+{
+border:1px solid black;
+}
+th
+{
+background-color:black;
+color:yellow;
+}
+
+body {  
+        margin: 0 auto;  
+        width: 940px;  
+        font: 13px/22px Helvetica, Arial, sans-serif;  
+        background: #efe02f;  
+    }
+
+    #intro {
+
+    }  

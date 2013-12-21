@@ -1,0 +1,190 @@
+
+<html>
+<head>
+
+<title> Slideshow </title>
+
+<!-- meta tags for the search engines -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="author" content="ricocheting">
+<meta name="robots" content="index,follow">
+
+<style type="text/css">
+<!-- /* style sheet for easy layout */
+body {
+	font-size : 10pt; 
+	color : black;
+	font-family : verdana,arial,helvetica,san-serif;
+	background-color : white;
+	}
+
+td	{
+	font-size : 10pt;
+	}
+// -->
+</style>
+
+</head>
+<body>
+
+<!-- configurable script -->
+<script language="JavaScript">
+theimage = new Array();
+
+
+// The dimensions of ALL the images should be the same or some of them may look stretched or reduced in Netscape 4.
+// Format: theimage[...]=[image URL, link URL, name/description]
+theimage[0]=["../images/tu1.jpg", "../slideshow_alpine.jpg", "Olympic National Park, Washington"];
+theimage[1]=["../images/tu2.jpg", "../slideshow_jasper.jpg", "Jasper National Park, Canada"];
+theimage[2]=["../images/tu3.jpg", "../slideshow_teton.jpg", "Grand Teton National Park, Wyoming"];
+theimage[3]=["../images/tu4.jpg", "../slideshow_rainier.jpg", "Mount Rainier National Park, Washington"];
+theimage[4]=["../images/tu5.jpg", "../slideshow_rainier.jpg", "Mount Rainier National Park, Washington"];
+theimage[5]=["../images/tu6.jpg", "../slideshow_rainier.jpg", "Mount Rainier National Park, Washington"];
+
+///// Plugin variables
+
+playspeed=3000;// The playspeed determines the delay for the "Play" button in ms
+linksperline=2; // For the text links
+playdiffernce=500; // The speed that the autoplay speed is changed by. 1000=1sec
+
+dotrans=1; // if value = 1 then there are transitions played in IE
+transtype='revealtrans';// 'blendTrans' or 'revealtrans'
+transattributes='10';// duration=seconds,transition=#<24
+//#####
+//key that holds where in the array currently are
+i=0;
+
+
+//###########################################
+//if random
+function SetRandom() {
+	tempimage = new Array();
+	for(p=0; p<theimage.length; p++){
+		for(p1=0; p1>-1; p1) {
+			tempNum = Math.floor(Math.random()*theimage.length)
+			if(!tempimage[tempNum]){
+				tempimage[tempNum]=theimage[p];
+				break;
+			}
+		}
+	}
+	for(p=0;p<theimage.length;p++)theimage[p]=tempimage[p];
+}
+
+//if random order
+SetRandom()
+
+
+//###########################################
+window.onload=function(){
+
+	//preload images into browser
+	preloadSlide();
+
+	//set transitions
+	GetTrans();
+
+	//set the first slide
+	SetSlide(0);
+
+	//autoplay
+	PlaySlide();
+}
+
+// Preloader
+function preloadSlide() {for(k=0;k<til;k++) {theimage[k][1]=new Image().src=theimage[k][1];}}
+
+//###########################################
+function SetSlide(num) {
+	//too big
+	i=num%theimage.length;
+	//too small
+	if(i<0)i=theimage.length-1;
+
+	//switch the image
+	if(document.all&&!window.opera&&dotrans==1)eval('document.images.imgslide.filters.'+transtype+'.Apply()')
+	document.images.imgslide.src=theimage[i][0];
+	if(document.all&&!window.opera&&dotrans==1)eval('document.images.imgslide.filters.'+transtype+'.Play()')
+
+}
+
+
+//###########################################
+function PlaySlide() {
+	if (!window.playing) {
+		PlayingSlide(i+1);
+		if(document.slideshow.play){
+			document.slideshow.play.value="   Stop   ";
+		}
+	}
+	else {
+		playing=clearTimeout(playing);
+		if(document.slideshow.play){
+			document.slideshow.play.value="   Play   ";
+		}
+	}
+	// if you have to change the image for the "playing" slide
+	if(document.images.imgPlay){
+		setTimeout('document.images.imgPlay.src="'+imgStop+'"',1);
+		imgStop=document.images.imgPlay.src
+	}
+}
+
+
+//###########################################
+function PlayingSlide(num) {
+	playing=setTimeout('PlayingSlide(i+1);SetSlide(i+1);', playspeed);
+}
+
+
+//###########################################
+//desc: picks the transition to apply to the images
+function GetTrans() {
+	//si=document.slideshow.trans.selectedIndex;
+
+		if((document.slideshow.trans && document.slideshow.trans.selectedIndex == 0) || (!document.slideshow.trans && dotrans==0)){
+		dotrans=0;
+	}
+	else if ((document.slideshow.trans && document.slideshow.trans.selectedIndex == 1) || (!document.slideshow.trans && transtype == 'blendTrans')){
+		dotrans=1;
+		transtype='blendTrans';
+		document.imgslide.style.filter = "blendTrans(duration=1,transition=1)";
+	}else{
+		dotrans=1;
+		transtype='revealtrans';
+		if(document.slideshow.trans) transattributes=document.slideshow.trans[document.slideshow.trans.selectedIndex].value;
+		document.imgslide.style.filter = "revealTrans(duration=1,transition=" +transattributes+ ")";
+	}
+
+}
+//###########################################
+function preloadSlide() {
+	for(k=0;k<theimage.length;k++) {
+		theimage[k][0]=new Image().src=theimage[k][0];
+	}
+}
+
+
+</script>
+
+
+<!-- slide show HTML -->
+<form name="slideshow">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+	<td align="center">
+	
+	<script language="javascript">
+		document.write('<img name="imgslide" id="imgslide" src="'+theimage[0][0]+'" border="0">')
+	</script>
+	
+	</td>
+</tr>
+</table>
+
+</form>
+<!-- end of slide show HTML -->
+
+</body>
+</html>
